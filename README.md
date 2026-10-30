@@ -1,132 +1,234 @@
-# ✦ Invero
+<!-- ================================================== -->
+<!--                    INVERO README                  -->
+<!-- ================================================== -->
 
-### Build beautifully. Code confidently. Ship faster.
+<div align="center">
 
-<p align="center">
-  A growing library of premium web experiences, beautifully crafted UI components, website templates, and full-stack solutions — built for developers who care about great design and great code.
-</p>
+# ✦ INVERO
 
-<p align="center">
-  <b>Design better · Build faster · Create without limits</b>
-</p>
+### The art of building better for the web.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Status-Under%20Development-8B7CF6?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Platform-Web%20Development-222222?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Community-Developers-blue?style=for-the-badge" />
-</p>
+A curated universe of beautifully crafted UI components, premium website templates, and production-ready code.
+
+<br/>
+
+**DESIGN. DEVELOP. DEPLOY.**
+
+<br/>
+
+[![Status](https://img.shields.io/badge/STATUS-IN%20DEVELOPMENT-8B7CF6?style=for-the-badge&labelColor=111111)](#)
+[![Platform](https://img.shields.io/badge/BUILT%20FOR-DEVELOPERS-FFFFFF?style=for-the-badge&labelColor=111111)](#)
+[![npm](https://img.shields.io/badge/POWERED%20BY-npm-CB3837?style=for-the-badge&labelColor=111111)](#)
+
+<br/>
+
+<!-- Add your banner image at assets/invero-banner.png -->
+
+<img src="assets/invero-banner.png" width="100%" alt="Invero — Build better for the web"/>
+
+<br/>
+
+[Explore Invero](#-explore-the-ecosystem) · [CLI Experience](#-your-terminal-your-workflow) · [Our Vision](#-the-vision)
+
+</div>
 
 ---
 
-## ✨ Discover Invero
+<div align="center">
 
-**Why build everything from scratch?**
+## ✳ NOT JUST ANOTHER COMPONENT LIBRARY.
 
-Invero is being built to help developers discover and integrate high-quality web resources directly into their projects.
+### A better way to build the web.
 
-From a beautifully designed navbar to a complete authentication system or an entire SaaS dashboard, find what you need and focus on creating something extraordinary.
+</div>
+
+Developers spend hours recreating things that have already been built.
+
+The same navigation bars. The same authentication flows. The same dashboards.
+
+**Invero changes the starting point.**
+
+Discover thoughtfully designed web experiences, integrate ready-to-use code into your projects, and spend more time creating something that matters.
 
 ---
 
-## 🎨 What's inside?
+## ◈ Explore the ecosystem
 
 <table>
-  <tr>
-    <td width="50%">
-      <h3>🧩 UI Components</h3>
-      Beautiful buttons, navbars, cards, forms, animations, and interactive elements.
-    </td>
-    <td width="50%">
-      <h3>🌐 Website Templates</h3>
-      Complete website designs with polished layouts and modern user experiences.
-    </td>
-  </tr>
-  <tr>
-    <td width="50%">
-      <h3>⚡ Full-Stack Solutions</h3>
-      Ready-to-integrate frontend and backend implementations.
-    </td>
-    <td width="50%">
-      <h3>🔐 Authentication Systems</h3>
-      Login, registration, password recovery, JWT authentication, and more.
-    </td>
-  </tr>
+<tr>
+<td width="50%" valign="top">
+
+### 🎨 UI Components
+
+Beautifully designed elements that make interfaces feel alive.
+
+- Modern navigation bars
+- Interactive buttons
+- Cards and forms
+- Animations and transitions
+- Responsive layouts
+
+</td>
+<td width="50%" valign="top">
+
+### 🖥 Website Templates
+
+Complete website experiences, ready to customize.
+
+- SaaS websites
+- Portfolio websites
+- Landing pages
+- Agency websites
+- Creative experiences
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### ⚡ Full-Stack Solutions
+
+Go beyond the frontend with complete implementations.
+
+- Backend integrations
+- REST APIs
+- Database structures
+- Complete application flows
+- Reusable architectures
+
+</td>
+<td width="50%" valign="top">
+
+### 🔐 Authentication Systems
+
+Skip repetitive setup and focus on your product.
+
+- Login and registration
+- Forgot password
+- JWT authentication
+- Protected routes
+- Frontend and backend integration
+
+</td>
+</tr>
 </table>
 
 ---
 
-## 💻 One command. Your project. Ready to build.
+<div align="center">
 
-Invero is designed around a simple CLI experience.
+## ⌘ Your terminal. Your workflow.
+
+### From discovery to integration in one command.
+
+</div>
+
+No unnecessary setup. No hunting through endless repositories.
+
+Invero is being built around a developer-friendly CLI that brings selected resources directly into your project.
+
+**Add a component**
 
 ```bash
-# Add a modern navbar
 npx invero add modern-navbar
 ```
 
+**Add authentication**
+
 ```bash
-# Add a complete authentication system
 npx invero add good-login
 ```
 
+**Add an entire dashboard**
+
 ```bash
-# Add a SaaS dashboard
 npx invero add saas-dashboard
 ```
 
-Get the code you need directly inside your project, customize it, and make it yours.
+<br/>
+
+<div align="center">
+
+*Find it. Add it. Make it yours.*
+
+</div>
 
 ---
 
-## 🛠️ Built for the modern web
+## ◇ Designed for the modern web
 
-| Frontend | Backend | Ecosystem |
-|---|---|---|
+<div align="center">
+
+| FRONTEND | BACKEND | TOOLS |
+|:---:|:---:|:---:|
 | React | Node.js | npm |
 | JavaScript | Express.js | Git |
-| HTML & CSS / SCSS | MongoDB | CLI |
+| HTML | MongoDB | CLI |
+| CSS / SCSS | REST APIs | GitHub |
+
+</div>
 
 ---
 
-## 💎 Free & Premium
+## ✦ Quality has no shortcuts.
 
-Great resources should be accessible.
+Invero aims to bring together resources that combine:
 
-Invero aims to offer both free and premium resources, giving developers the flexibility to choose what works best for their projects.
+<table>
+<tr>
+<td align="center" width="33%">
+<h3>01</h3>
+<b>Great Design</b>
+<br/>
+<sub>Interfaces with attention to every detail.</sub>
+</td>
+<td align="center" width="33%">
+<h3>02</h3>
+<b>Quality Code</b>
+<br/>
+<sub>Readable, reusable, developer-friendly code.</sub>
+</td>
+<td align="center" width="33%">
+<h3>03</h3>
+<b>Real Utility</b>
+<br/>
+<sub>Resources that solve actual development problems.</sub>
+</td>
+</tr>
+</table>
 
 ---
 
-## 🎯 Our Vision
+## ◈ Free meets premium.
 
-We believe great software deserves great design.
+Whether you're experimenting with a new idea or building your next big product, Invero aims to provide resources for every stage of development.
 
-Our goal is to bring together exceptional web design, reusable code, and developer-friendly workflows in one place.
-
-Less repetitive work. More creative freedom. Better products.
+**Explore free resources. Unlock premium experiences. Build without limits.**
 
 ---
 
-## 🚧 Project Status
+## 🚧 The journey has just begun.
 
-<p>
-  <img src="https://img.shields.io/badge/Development-In%20Progress-orange?style=flat-square" />
-</p>
+<div align="center">
 
-Invero is currently under development. We're working on the resource library, CLI experience, and platform.
+<img src="https://img.shields.io/badge/INVERO-UNDER%20CONSTRUCTION-8B7CF6?style=for-the-badge&labelColor=111111"/>
 
-More exciting things are coming.
+<br/><br/>
 
----
+The platform, CLI, and resource ecosystem are currently under development.
 
-## 🌟 Stay Connected
+We're building something for people who believe the web can be more beautiful, more accessible, and easier to build.
 
-Follow the project, explore what's coming, and be part of the journey.
+<br/>
 
-<p align="center">
-  <b>INVERO</b><br/>
-  <i>Design better. Build faster.</i>
-</p>
+### The future is built, one line at a time.
 
-<p align="center">
-  Made with passion for the web development community.
-</p>
+<br/>
+
+# INVERO ✦
+
+**Design better. Build beyond.**
+
+<sub>Made for the people who build the web.</sub>
+
+</div>
