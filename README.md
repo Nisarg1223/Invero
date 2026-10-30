@@ -18,7 +18,8 @@ A curated universe of beautifully crafted UI components, premium website templat
 <br/>
 
 
-<img width="956" height="377" alt="image" src="https://github.com/user-attachments/assets/8bf5614c-277d-4a93-b7da-93f5ac1aaa56" />
+<img width="956" height="377" alt="image" src="https://github.com/user-attachments/assets/b620a3cc-d2fc-463f-9ca0-9c0f73727608" />
+
 
 
 
