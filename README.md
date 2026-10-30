@@ -1,69 +1,132 @@
-# Invero
+# ✦ Invero
 
-### Build beautiful websites. Ship better code.
+### Build beautifully. Code confidently. Ship faster.
 
-Invero is a platform for developers and designers to discover, explore, and integrate beautifully crafted website components, premium UI designs, templates, and full-stack solutions directly into their projects.
+<p align="center">
+  A growing library of premium web experiences, beautifully crafted UI components, website templates, and full-stack solutions — built for developers who care about great design and great code.
+</p>
 
-From modern navigation bars to complete SaaS dashboards and authentication systems, Invero makes high-quality web development resources accessible through a simple CLI workflow.
+<p align="center">
+  <b>Design better · Build faster · Create without limits</b>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Status-Under%20Development-8B7CF6?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Platform-Web%20Development-222222?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Community-Developers-blue?style=for-the-badge" />
+</p>
 
 ---
 
-## ✨ What is Invero?
+## ✨ Discover Invero
 
-Invero is being built around one simple idea:
+**Why build everything from scratch?**
 
-**You shouldn't have to build everything from scratch to build something extraordinary.**
+Invero is being built to help developers discover and integrate high-quality web resources directly into their projects.
 
-Discover ready-to-use resources, add them to your project, customize the code, and ship faster.
+From a beautifully designed navbar to a complete authentication system or an entire SaaS dashboard, find what you need and focus on creating something extraordinary.
 
-## 🚀 What we're building
+---
 
-- **UI Components** — Modern buttons, navbars, forms, cards, animations, and more.
-- **Website Templates** — Beautifully designed, production-ready website layouts.
-- **Full-Stack Solutions** — Complete frontend and backend implementations.
-- **Authentication Systems** — Login, registration, password recovery, JWT authentication, and more.
-- **Free & Premium Resources** — Resources for developers at every stage.
+## 🎨 What's inside?
 
-## 💻 CLI Experience
+<table>
+  <tr>
+    <td width="50%">
+      <h3>🧩 UI Components</h3>
+      Beautiful buttons, navbars, cards, forms, animations, and interactive elements.
+    </td>
+    <td width="50%">
+      <h3>🌐 Website Templates</h3>
+      Complete website designs with polished layouts and modern user experiences.
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <h3>⚡ Full-Stack Solutions</h3>
+      Ready-to-integrate frontend and backend implementations.
+    </td>
+    <td width="50%">
+      <h3>🔐 Authentication Systems</h3>
+      Login, registration, password recovery, JWT authentication, and more.
+    </td>
+  </tr>
+</table>
 
-Invero aims to make integrating resources as simple as running a command.
+---
+
+## 💻 One command. Your project. Ready to build.
+
+Invero is designed around a simple CLI experience.
 
 ```bash
+# Add a modern navbar
 npx invero add modern-navbar
 ```
 
-Or install a complete solution:
+```bash
+# Add a complete authentication system
+npx invero add good-login
+```
 
 ```bash
-npx invero add good-login
+# Add a SaaS dashboard
 npx invero add saas-dashboard
 ```
 
-The CLI will help bring the selected code directly into your project.
-
-## 🎯 Our Mission
-
-To make exceptional web design and high-quality code more accessible to developers, while helping them spend less time reinventing the wheel and more time building meaningful products.
-
-## 🛠️ Built for Developers
-
-Invero is focused on the modern web development ecosystem, including:
-
-- React
-- JavaScript
-- HTML & CSS / SCSS
-- Node.js
-- Express.js
-- MongoDB
-
-## 📌 Project Status
-
-**Invero is currently under development.**
-
-We're working on the platform, CLI experience, resource library, and integration workflow.
-
-Stay tuned for what's coming next.
+Get the code you need directly inside your project, customize it, and make it yours.
 
 ---
 
-**Invero — Design better. Build faster.**
+## 🛠️ Built for the modern web
+
+| Frontend | Backend | Ecosystem |
+|---|---|---|
+| React | Node.js | npm |
+| JavaScript | Express.js | Git |
+| HTML & CSS / SCSS | MongoDB | CLI |
+
+---
+
+## 💎 Free & Premium
+
+Great resources should be accessible.
+
+Invero aims to offer both free and premium resources, giving developers the flexibility to choose what works best for their projects.
+
+---
+
+## 🎯 Our Vision
+
+We believe great software deserves great design.
+
+Our goal is to bring together exceptional web design, reusable code, and developer-friendly workflows in one place.
+
+Less repetitive work. More creative freedom. Better products.
+
+---
+
+## 🚧 Project Status
+
+<p>
+  <img src="https://img.shields.io/badge/Development-In%20Progress-orange?style=flat-square" />
+</p>
+
+Invero is currently under development. We're working on the resource library, CLI experience, and platform.
+
+More exciting things are coming.
+
+---
+
+## 🌟 Stay Connected
+
+Follow the project, explore what's coming, and be part of the journey.
+
+<p align="center">
+  <b>INVERO</b><br/>
+  <i>Design better. Build faster.</i>
+</p>
+
+<p align="center">
+  Made with passion for the web development community.
+</p>
