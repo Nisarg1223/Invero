@@ -3,6 +3,7 @@
 <!-- ================================================== -->
 
 <div align="center">
+<img width="515" height="249" alt="image" src="https://github.com/user-attachments/assets/a5437153-95db-44b7-9d50-5363320066a6" />
 
 # ✦ INVERO
 
@@ -16,9 +17,9 @@ A curated universe of beautifully crafted UI components, premium website templat
 
 <br/>
 
-[![Status](https://img.shields.io/badge/STATUS-IN%20DEVELOPMENT-8B7CF6?style=for-the-badge&labelColor=111111)](#)
-[![Platform](https://img.shields.io/badge/BUILT%20FOR-DEVELOPERS-FFFFFF?style=for-the-badge&labelColor=111111)](#)
-[![npm](https://img.shields.io/badge/POWERED%20BY-npm-CB3837?style=for-the-badge&labelColor=111111)](#)
+<img width="515" height="249" alt="image" src="https://github.com/user-attachments/assets/7d9ca01a-6c13-477e-a8bf-56c01949f2e3" />
+
+
 
 <br/>
 
