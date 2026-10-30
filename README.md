@@ -3,7 +3,7 @@
 <!-- ================================================== -->
 
 <div align="center">
-<img width="515" height="249" alt="image" src="https://github.com/user-attachments/assets/a5437153-95db-44b7-9d50-5363320066a6" />
+
 
 # ✦ INVERO
 
@@ -17,7 +17,8 @@ A curated universe of beautifully crafted UI components, premium website templat
 
 <br/>
 
-<img width="515" height="249" alt="image" src="https://github.com/user-attachments/assets/7d9ca01a-6c13-477e-a8bf-56c01949f2e3" />
+
+<img width="956" height="377" alt="image" src="https://github.com/user-attachments/assets/8bf5614c-277d-4a93-b7da-93f5ac1aaa56" />
 
 
 
@@ -25,7 +26,7 @@ A curated universe of beautifully crafted UI components, premium website templat
 
 <!-- Add your banner image at assets/invero-banner.png -->
 
-<img src="assets/invero-banner.png" width="100%" alt="Invero — Build better for the web"/>
+
 
 <br/>
 
