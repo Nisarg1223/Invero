@@ -70,7 +70,11 @@ export default function App() {
       }
 
       // Category filter
-      if (selectedCategory !== 'Home') {
+      if (selectedCategory === 'Home') {
+        if (item.category !== 'Home' && !item.tags.includes('Home')) {
+          return false;
+        }
+      } else {
         const matchesCat = 
           item.category.toLowerCase() === selectedCategory.toLowerCase() ||
           item.tags.some(t => t.toLowerCase() === selectedCategory.toLowerCase());

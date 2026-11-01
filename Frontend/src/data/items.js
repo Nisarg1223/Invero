@@ -1,35 +1,35 @@
 export const INITIAL_ITEMS = [
   {
-    id: 'buddy24',
-    title: 'Buddy24.com',
-    subtitle: 'Your Personal Productivity Buddy',
-    category: 'Hero',
-    image: '/images/buddy24.jpg',
+    id: 'portfolio',
+    title: 'Creative Portfolio',
+    subtitle: 'Modern Digital Experience',
+    category: 'Home',
+    image: '/images/new_portfolio.jpeg',
     author: {
-      name: 'Buddy24 Studio',
+      name: 'Portfolio Studio',
       avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80',
-      handle: '@buddy24'
+      handle: '@portfolio'
     },
-    likes: 184,
-    saves: 92,
-    views: '2.4k',
+    likes: 248,
+    saves: 115,
+    views: '3.1k',
     sponsored: false,
-    tags: ['Hero', 'Websites', '3D Design', 'Productivity', 'Warm Tone'],
+    tags: ['Home', 'Websites', 'Portfolio', 'Modern Design'],
     palette: ['#EB7A36', '#F6A058', '#402D22', '#FFFFFF', '#6C584C'],
-    description: 'Playful 3D character hero for Buddy24 productivity companion. High-contrast bold typography and warm clay aesthetics create an immediate welcoming, emotional connection with the user.',
+    description: 'Modern creative digital portfolio hero with warm aesthetic, high-contrast typography, and playful character companion.',
     specs: {
-      'Typography': 'Custom Sans Bold & Clean Body',
+      'Typography': 'Modern Sans Bold & Clean Display',
       'Color Vibe': 'Terracotta Orange & Warm Clay',
-      'Visual Style': '3D Stylized Chibi Mascot with Headphones'
+      'Visual Style': 'Creative Digital Portfolio Hero'
     },
-    externalUrl: 'https://buddy24.com'
+    externalUrl: '#'
   },
   {
     id: 'upi-payment',
     title: 'UPI — Unified Payments',
     subtitle: 'Fast. Secure. Seamless.',
-    category: 'Hero',
-    image: '/images/upi.jpg',
+    category: 'Home',
+    image: '/images/new_upi.jpeg',
     author: {
       name: 'FinTech Design Lab',
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80',
@@ -39,7 +39,7 @@ export const INITIAL_ITEMS = [
     saves: 178,
     views: '4.1k',
     sponsored: false,
-    tags: ['Hero', 'Websites', 'FinTech', 'Payments', 'Indian Tech', 'Features'],
+    tags: ['Home', 'Websites', 'FinTech', 'Payments', 'Indian Tech', 'Features'],
     palette: ['#7C3AED', '#3B82F6', '#10B981', '#EDE9FE', '#1F2937'],
     description: 'Trust-centric Indian FinTech hero interface highlighting seamless mobile payments. Seamlessly weaves cultural landmarks (India Gate, Taj Mahal) with contactless QR codes and clear verification state.',
     specs: {
@@ -53,8 +53,8 @@ export const INITIAL_ITEMS = [
     id: 'robotics-ai',
     title: 'ROBOTICS — A.I. Panic',
     subtitle: 'One Practice, One Card',
-    category: 'Hero',
-    image: '/images/robotics.jpg',
+    category: 'Home',
+    image: '/images/new_robotics.png',
     author: {
       name: 'Follow Art Studio',
       avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80',
@@ -64,7 +64,7 @@ export const INITIAL_ITEMS = [
     saves: 265,
     views: '5.8k',
     sponsored: false,
-    tags: ['Hero', 'Websites', 'Brutalist', 'Robotics', 'Bold Typography', 'CTA'],
+    tags: ['Home', 'Websites', 'Brutalist', 'Robotics', 'Bold Typography', 'CTA'],
     palette: ['#F95721', '#1A1817', '#FFFFFF', '#FDBA74', '#78716C'],
     description: 'High-voltage brutalist editorial landing page hero combining towering ultra-condensed typography, distressed retro-futuristic robot illustration, and an intense high-visibility safety orange canvas.',
     specs: {
@@ -78,7 +78,7 @@ export const INITIAL_ITEMS = [
     id: 'wikala',
     title: 'Wikala®',
     subtitle: 'Turn Ads Into Paying Customers',
-    category: 'Hero',
+    category: 'Home',
     image: '/images/wikala.jpg',
     author: {
       name: 'Wikala Creative',
@@ -89,7 +89,7 @@ export const INITIAL_ITEMS = [
     saves: 219,
     views: '4.7k',
     sponsored: false,
-    tags: ['Hero', 'Websites', '3D Art', 'Agency', 'Marketing', 'Editorial'],
+    tags: ['Home', 'Websites', '3D Art', 'Agency', 'Marketing', 'Editorial'],
     palette: ['#FACC15', '#EAB308', '#18181B', '#F5F5F4', '#CA8A04'],
     description: 'High-impact agency landing page hero for Wikala®. Features an eye-catching yellow tape-wrapped sculpture, elegant serif editorial headline, and floating graphic ad cards.',
     specs: {
@@ -98,6 +98,31 @@ export const INITIAL_ITEMS = [
       'Visual Style': 'Surreal Tape-Wrapped 3D Figure & Dynamic Floating Collage'
     },
     externalUrl: 'https://wikala.com'
+  },
+  {
+    id: 'inspiron',
+    title: 'INSPIRON — Comic-Cybernetic Portfolio',
+    subtitle: 'Explore · Create · Innovate',
+    category: 'Hero',
+    image: '/images/inspiron.png',
+    author: {
+      name: 'Inspiron Creative',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80',
+      handle: '@inspiron'
+    },
+    likes: 512,
+    saves: 340,
+    views: '6.2k',
+    sponsored: false,
+    tags: ['Hero', 'Websites', 'Cybernetic', 'Illustration', 'Portfolio', 'Bold Display'],
+    palette: ['#F3EFE0', '#E11D48', '#09090B', '#38BDF8', '#F59E0B'],
+    description: 'High-voltage comic-cybernetic editorial portfolio hero featuring massive typography, multi-panel retro comic mind-expansion illustration, and vintage pop art aesthetics.',
+    specs: {
+      'Typography': 'Massive Condensed Display & Minimal Sans',
+      'Color Vibe': 'Cream Canvas, Comic Red & Inky Black',
+      'Visual Style': 'Retro Pop-Art Comic Multi-Panel Sci-Fi Illustration'
+    },
+    externalUrl: '#'
   }
 ];
 
@@ -124,4 +149,3 @@ export const NAV_LINKS = [
   { id: 'favourites', label: 'Favourites' },
   { id: 'search', label: 'Search' }
 ];
-

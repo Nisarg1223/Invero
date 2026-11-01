@@ -41,10 +41,10 @@ export default function CardItem({
           src={item.image}
           alt={item.title}
           onLoad={() => setImgLoaded(true)}
+          onError={() => setImgLoaded(true)}
           className={`w-full h-auto block object-contain transition-transform duration-500 cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-[1.02] ${
             imgLoaded ? 'opacity-100' : 'opacity-0 absolute inset-0'
           }`}
-          loading="lazy"
         />
 
         {/* Top Badges (e.g. Sponsored if applicable) */}
