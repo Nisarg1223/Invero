@@ -73,6 +73,31 @@ export const INITIAL_ITEMS = [
       'Visual Style': 'Grainy Retro Sci-Fi & Heavy Editorial Poster'
     },
     externalUrl: 'https://followart.design'
+  },
+  {
+    id: 'wikala',
+    title: 'Wikala®',
+    subtitle: 'Turn Ads Into Paying Customers',
+    category: 'Hero',
+    image: '/images/wikala.jpg',
+    author: {
+      name: 'Wikala Creative',
+      avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&auto=format&fit=crop&q=80',
+      handle: '@wikala'
+    },
+    likes: 387,
+    saves: 219,
+    views: '4.7k',
+    sponsored: false,
+    tags: ['Hero', 'Websites', '3D Art', 'Agency', 'Marketing', 'Editorial'],
+    palette: ['#FACC15', '#EAB308', '#18181B', '#F5F5F4', '#CA8A04'],
+    description: 'High-impact agency landing page hero for Wikala®. Features an eye-catching yellow tape-wrapped sculpture, elegant serif editorial headline, and floating graphic ad cards.',
+    specs: {
+      'Typography': 'Editorial Serif & Minimal Sans',
+      'Color Vibe': 'Caution Yellow, Amber & Warm Cream',
+      'Visual Style': 'Surreal Tape-Wrapped 3D Figure & Dynamic Floating Collage'
+    },
+    externalUrl: 'https://wikala.com'
   }
 ];
 

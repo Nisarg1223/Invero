@@ -202,11 +202,11 @@ export default function App() {
           </div>
         )}
 
-        {/* Dynamic Multi-column Grid (matching Image 1 layout) */}
+        {/* Dynamic Multi-column Masonry Grid */}
         {!isMoodboardMode ? (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-start">
-            {/* Top-Left Slot: Hero Intro Card */}
-            <div className="md:col-span-1 xl:col-span-1 h-full">
+            {/* Column 1: Hero Intro Card */}
+            <div className="w-full flex flex-col gap-6">
               <HeroIntroCard
                 onSurpriseMe={handleSurpriseMe}
                 onExploreMoodboards={() => setIsMoodboardMode(!isMoodboardMode)}
@@ -214,10 +214,11 @@ export default function App() {
               />
             </div>
 
-            {/* Showcase Items (The 3 user images: Buddy24, UPI, Robotics) */}
-            {filteredItems.map((item) => (
-              <div key={item.id} className="w-full">
+            {/* Column 2: 1st Card (Buddy24) and 4th Card (Wikala) placed under it */}
+            <div className="w-full flex flex-col gap-6">
+              {filteredItems.filter((_, idx) => idx % 3 === 0).map((item) => (
                 <CardItem
+                  key={item.id}
                   item={item}
                   isHighlighted={highlightedId === item.id}
                   onOpenModal={(it) => setActiveModalItem(it)}
@@ -226,8 +227,40 @@ export default function App() {
                   isSaved={savedIds.has(item.id)}
                   onToggleSave={toggleSave}
                 />
-              </div>
-            ))}
+              ))}
+            </div>
+
+            {/* Column 3: 2nd Card (UPI) */}
+            <div className="w-full flex flex-col gap-6">
+              {filteredItems.filter((_, idx) => idx % 3 === 1).map((item) => (
+                <CardItem
+                  key={item.id}
+                  item={item}
+                  isHighlighted={highlightedId === item.id}
+                  onOpenModal={(it) => setActiveModalItem(it)}
+                  isLiked={likedIds.has(item.id)}
+                  onToggleLike={toggleLike}
+                  isSaved={savedIds.has(item.id)}
+                  onToggleSave={toggleSave}
+                />
+              ))}
+            </div>
+
+            {/* Column 4: 3rd Card (Robotics) */}
+            <div className="w-full flex flex-col gap-6">
+              {filteredItems.filter((_, idx) => idx % 3 === 2).map((item) => (
+                <CardItem
+                  key={item.id}
+                  item={item}
+                  isHighlighted={highlightedId === item.id}
+                  onOpenModal={(it) => setActiveModalItem(it)}
+                  isLiked={likedIds.has(item.id)}
+                  onToggleLike={toggleLike}
+                  isSaved={savedIds.has(item.id)}
+                  onToggleSave={toggleSave}
+                />
+              ))}
+            </div>
           </div>
         ) : (
           /* Moodboard Collage View */
@@ -301,7 +334,7 @@ export default function App() {
             <a href="#" className="hover:text-neutral-900 transition-colors">Terms</a>
             <a href="#" className="hover:text-neutral-900 transition-colors">Submit Design</a>
             <span className="text-neutral-300">|</span>
-            <span className="text-neutral-400">Featuring 3 Handcrafted Hero Inspirations</span>
+            <span className="text-neutral-400">Featuring {items.length} Curated Inspirations</span>
           </div>
         </div>
       </footer>
