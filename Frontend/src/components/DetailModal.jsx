@@ -59,17 +59,26 @@ export default function DetailModal({
   return (
     <div
       onClick={onClose}
-      className="fixed inset-0 z-50 bg-black/40 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 lg:p-8 overflow-y-auto animate-backdrop"
+      className="fixed inset-0 z-50 bg-black/40 backdrop-blur-md flex items-center justify-center p-2.5 sm:p-5 lg:p-8 overflow-y-auto animate-backdrop"
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative bg-white rounded-[26px] w-full max-w-[1440px] h-[92vh] max-h-[920px] overflow-hidden shadow-2xl border border-black/5 flex flex-col lg:flex-row my-auto animate-smooth-modal"
+        className="relative bg-white rounded-[24px] sm:rounded-[28px] w-full max-w-[1440px] max-h-[92vh] lg:h-[92vh] lg:max-h-[920px] overflow-y-auto lg:overflow-hidden shadow-2xl border border-black/5 flex flex-col lg:flex-row my-auto animate-smooth-modal"
       >
+        {/* Mobile Floating Close Button */}
+        <button
+          onClick={onClose}
+          className="lg:hidden absolute top-3.5 right-3.5 z-30 p-2 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-md shadow-md transition-all active:scale-95"
+          title="Close modal"
+        >
+          <CloseIcon size={16} />
+        </button>
+
         {/* Left / Center Section: Design Showcase Canvas */}
-        <div className="flex-1 bg-[#f8f8fa] p-5 sm:p-8 lg:p-10 flex flex-col justify-between items-center overflow-y-auto relative border-b lg:border-b-0 lg:border-r border-neutral-200/70 select-none">
+        <div className="w-full lg:flex-1 bg-[#f8f8fa] p-4 sm:p-6 lg:p-10 flex flex-col justify-center items-center shrink-0 lg:shrink lg:overflow-y-auto relative border-b lg:border-b-0 lg:border-r border-neutral-200/70 select-none">
           {/* Top Multi-image Tabs (e.g. Slide 01 / Slide 04 for DGREES) */}
           {images.length > 1 ? (
-            <div className="flex items-center gap-2 mb-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-neutral-200/80 shadow-xs z-10">
+            <div className="flex items-center gap-2 mb-3 lg:mb-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-neutral-200/80 shadow-xs z-10">
               <span className="text-[11px] font-bold text-neutral-400 uppercase tracking-wider pl-1">
                 Screens:
               </span>
@@ -90,46 +99,46 @@ export default function DetailModal({
               </div>
             </div>
           ) : (
-            <div className="h-2" />
+            <div className="h-1 lg:h-2" />
           )}
 
-          {/* Main Visual Preview Window */}
-          <div className="w-full flex-1 flex items-center justify-center my-auto py-2">
-            <div className="relative max-w-full rounded-2xl overflow-hidden shadow-[0_20px_50px_-15px_rgba(0,0,0,0.12)] border border-neutral-200/90 bg-white transition-all duration-300">
+          {/* Main Visual Preview Window - Fully visible & uncropped */}
+          <div className="w-full flex items-center justify-center py-2 sm:py-3 lg:my-auto">
+            <div className="relative w-full max-w-full rounded-2xl overflow-hidden shadow-[0_12px_36px_-10px_rgba(0,0,0,0.1)] border border-neutral-200/90 bg-white transition-all duration-300">
               <img
                 src={currentImage}
                 alt={item.title}
-                className="w-full max-h-[620px] object-contain block mx-auto transition-transform duration-300"
+                className="w-full h-auto max-h-[50vh] sm:max-h-[58vh] lg:max-h-[620px] object-contain block mx-auto transition-transform duration-300"
               />
             </div>
           </div>
 
           {/* Bottom Slide Indicators if multiple images */}
           {images.length > 1 ? (
-            <div className="flex items-center gap-2 mt-4 text-xs text-neutral-400">
+            <div className="flex items-center gap-2 mt-3 lg:mt-4 text-xs text-neutral-400">
               <button
                 onClick={() => setActiveImgIndex((prev) => (prev - 1 + images.length) % images.length)}
-                className="px-2.5 py-1 rounded-full bg-white hover:bg-neutral-100 text-neutral-700 border border-neutral-200 font-semibold transition-all"
+                className="px-2.5 py-1 rounded-full bg-white hover:bg-neutral-100 text-neutral-700 border border-neutral-200 font-semibold transition-all active:scale-95"
               >
-                ‹ Previous Slide
+                ‹ Prev
               </button>
               <span className="font-mono text-[11px]">
                 {activeImgIndex + 1} / {images.length}
               </span>
               <button
                 onClick={() => setActiveImgIndex((prev) => (prev + 1) % images.length)}
-                className="px-2.5 py-1 rounded-full bg-white hover:bg-neutral-100 text-neutral-700 border border-neutral-200 font-semibold transition-all"
+                className="px-2.5 py-1 rounded-full bg-white hover:bg-neutral-100 text-neutral-700 border border-neutral-200 font-semibold transition-all active:scale-95"
               >
-                Next Slide ›
+                Next ›
               </button>
             </div>
           ) : (
-            <div className="h-2" />
+            <div className="h-1 lg:h-2" />
           )}
         </div>
 
-        {/* Right Sidebar Section (Exact match to uploaded UI) */}
-        <div className="w-full lg:w-[420px] xl:w-[440px] bg-white p-6 sm:p-8 flex flex-col justify-between overflow-y-auto shrink-0 space-y-6">
+        {/* Right Sidebar Section */}
+        <div className="w-full lg:w-[420px] xl:w-[440px] bg-white p-5 sm:p-7 lg:p-8 flex flex-col justify-between lg:overflow-y-auto shrink-0 space-y-6">
           <div className="space-y-5">
             {/* Top Bar with Title & Close Button */}
             <div className="flex items-start justify-between gap-4">
