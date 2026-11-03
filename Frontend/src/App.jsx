@@ -218,53 +218,73 @@ export default function App() {
               />
             </div>
 
-            {/* Column 2: 1st Card (Buddy24) and 4th Card (Wikala) placed under it */}
-            <div className="w-full flex flex-col gap-6">
-              {filteredItems.filter((_, idx) => idx % 3 === 0).map((item) => (
-                <CardItem
-                  key={item.id}
-                  item={item}
-                  isHighlighted={highlightedId === item.id}
-                  onOpenModal={(it) => setActiveModalItem(it)}
-                  isLiked={likedIds.has(item.id)}
-                  onToggleLike={toggleLike}
-                  isSaved={savedIds.has(item.id)}
-                  onToggleSave={toggleSave}
-                />
-              ))}
-            </div>
+            {/* If 1 item in a specific category (like Components or Hero), let it span xl:col-span-2 for wide presentation */}
+            {filteredItems.length === 1 && selectedCategory !== 'Home' ? (
+              <div className="w-full md:col-span-1 xl:col-span-2">
+                {filteredItems.map((item) => (
+                  <CardItem
+                    key={item.id}
+                    item={item}
+                    isHighlighted={highlightedId === item.id}
+                    onOpenModal={(it) => setActiveModalItem(it)}
+                    isLiked={likedIds.has(item.id)}
+                    onToggleLike={toggleLike}
+                    isSaved={savedIds.has(item.id)}
+                    onToggleSave={toggleSave}
+                  />
+                ))}
+              </div>
+            ) : (
+              <>
+                {/* Column 2: 1st Card (Buddy24) and 4th Card (Wikala) placed under it */}
+                <div className="w-full flex flex-col gap-6">
+                  {filteredItems.filter((_, idx) => idx % 3 === 0).map((item) => (
+                    <CardItem
+                      key={item.id}
+                      item={item}
+                      isHighlighted={highlightedId === item.id}
+                      onOpenModal={(it) => setActiveModalItem(it)}
+                      isLiked={likedIds.has(item.id)}
+                      onToggleLike={toggleLike}
+                      isSaved={savedIds.has(item.id)}
+                      onToggleSave={toggleSave}
+                    />
+                  ))}
+                </div>
 
-            {/* Column 3: 2nd Card (UPI) */}
-            <div className="w-full flex flex-col gap-6">
-              {filteredItems.filter((_, idx) => idx % 3 === 1).map((item) => (
-                <CardItem
-                  key={item.id}
-                  item={item}
-                  isHighlighted={highlightedId === item.id}
-                  onOpenModal={(it) => setActiveModalItem(it)}
-                  isLiked={likedIds.has(item.id)}
-                  onToggleLike={toggleLike}
-                  isSaved={savedIds.has(item.id)}
-                  onToggleSave={toggleSave}
-                />
-              ))}
-            </div>
+                {/* Column 3: 2nd Card (UPI) */}
+                <div className="w-full flex flex-col gap-6">
+                  {filteredItems.filter((_, idx) => idx % 3 === 1).map((item) => (
+                    <CardItem
+                      key={item.id}
+                      item={item}
+                      isHighlighted={highlightedId === item.id}
+                      onOpenModal={(it) => setActiveModalItem(it)}
+                      isLiked={likedIds.has(item.id)}
+                      onToggleLike={toggleLike}
+                      isSaved={savedIds.has(item.id)}
+                      onToggleSave={toggleSave}
+                    />
+                  ))}
+                </div>
 
-            {/* Column 4: 3rd Card (Robotics) */}
-            <div className="w-full flex flex-col gap-6">
-              {filteredItems.filter((_, idx) => idx % 3 === 2).map((item) => (
-                <CardItem
-                  key={item.id}
-                  item={item}
-                  isHighlighted={highlightedId === item.id}
-                  onOpenModal={(it) => setActiveModalItem(it)}
-                  isLiked={likedIds.has(item.id)}
-                  onToggleLike={toggleLike}
-                  isSaved={savedIds.has(item.id)}
-                  onToggleSave={toggleSave}
-                />
-              ))}
-            </div>
+                {/* Column 4: 3rd Card (Robotics) */}
+                <div className="w-full flex flex-col gap-6">
+                  {filteredItems.filter((_, idx) => idx % 3 === 2).map((item) => (
+                    <CardItem
+                      key={item.id}
+                      item={item}
+                      isHighlighted={highlightedId === item.id}
+                      onOpenModal={(it) => setActiveModalItem(it)}
+                      isLiked={likedIds.has(item.id)}
+                      onToggleLike={toggleLike}
+                      isSaved={savedIds.has(item.id)}
+                      onToggleSave={toggleSave}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         ) : (
           /* Moodboard Collage View */
@@ -354,6 +374,8 @@ export default function App() {
           onToggleSave={toggleSave}
           onPrev={handleModalPrev}
           onNext={handleModalNext}
+          allItems={items}
+          onSelectSimilar={(sim) => setActiveModalItem(sim)}
         />
       )}
 

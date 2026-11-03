@@ -1,30 +1,40 @@
 import React, { useState, useEffect } from 'react';
-import { CloseIcon, ExternalLinkIcon, HeartIcon, BookmarkIcon, CheckIcon, ShareIcon } from './Icons';
+import { CloseIcon, ExternalLinkIcon, CheckIcon, CopyIcon, ZapIcon, LayersIcon } from './Icons';
 
 export default function DetailModal({
   item,
   onClose,
-  isLiked,
-  onToggleLike,
   isSaved,
   onToggleSave,
-  onPrev,
-  onNext
+  allItems = [],
+  onSelectSimilar
 }) {
   const [copiedColor, setCopiedColor] = useState(null);
-  const [copiedLink, setCopiedLink] = useState(false);
+  const [copiedCli, setCopiedCli] = useState(false);
+  const [copiedPrompt, setCopiedPrompt] = useState(false);
+  const [activeImgIndex, setActiveImgIndex] = useState(0);
+
+  useEffect(() => {
+    setActiveImgIndex(0);
+    setCopiedCli(false);
+    setCopiedPrompt(false);
+  }, [item]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose();
-      if (e.key === 'ArrowRight' && onNext) onNext();
-      if (e.key === 'ArrowLeft' && onPrev) onPrev();
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onClose, onNext, onPrev]);
+  }, [onClose]);
 
   if (!item) return null;
+
+  const images = item.images && item.images.length > 0 ? item.images : [item.image];
+  const currentImage = images[activeImgIndex] || item.image;
+
+  // Filter other items for "Similar designs" section
+  const similarDesigns = (allItems || []).filter(i => i.id !== item.id).slice(0, 3);
 
   const handleCopyColor = (color) => {
     navigator.clipboard.writeText(color);
@@ -32,214 +42,297 @@ export default function DetailModal({
     setTimeout(() => setCopiedColor(null), 1800);
   };
 
-  const handleCopyLink = () => {
-    navigator.clipboard.writeText(window.location.origin + '#' + item.id);
-    setCopiedLink(true);
-    setTimeout(() => setCopiedLink(false), 2000);
+  const handleCopyCli = () => {
+    if (!item.cliCommand) return;
+    navigator.clipboard.writeText(item.cliCommand);
+    setCopiedCli(true);
+    setTimeout(() => setCopiedCli(false), 2200);
+  };
+
+  const handleCopyPrompt = () => {
+    const promptText = `Design inspiration: ${item.title}. Style: ${item.specs ? Object.values(item.specs).join(', ') : item.category}. Description: ${item.description}`;
+    navigator.clipboard.writeText(promptText);
+    setCopiedPrompt(true);
+    setTimeout(() => setCopiedPrompt(false), 2000);
   };
 
   return (
     <div
       onClick={onClose}
-      className="fixed inset-0 z-50 bg-black/60 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto animate-backdrop"
+      className="fixed inset-0 z-50 bg-black/40 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 lg:p-8 overflow-y-auto animate-backdrop"
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative bg-white rounded-[24px] w-full max-w-5xl max-h-[92vh] overflow-hidden shadow-2xl border border-neutral-100 flex flex-col my-auto animate-smooth-modal"
+        className="relative bg-white rounded-[26px] w-full max-w-[1440px] h-[92vh] max-h-[920px] overflow-hidden shadow-2xl border border-black/5 flex flex-col lg:flex-row my-auto animate-smooth-modal"
       >
-        {/* Modal Header */}
-        <div className="px-6 py-4 border-b border-neutral-100 flex items-center justify-between bg-white/95 backdrop-blur-md sticky top-0 z-20">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full overflow-hidden bg-neutral-200 border border-neutral-200 flex items-center justify-center text-xs font-bold text-neutral-600 shadow-xs">
-              {item.author.avatar ? (
-                <img src={item.author.avatar} alt={item.author.name} className="w-full h-full object-cover" />
-              ) : (
-                item.author.name.charAt(0)
-              )}
-            </div>
-            <div>
-              <h2 className="font-bold text-sm text-neutral-900 flex items-center gap-2">
-                <span>{item.title}</span>
-                <span className="px-2.5 py-0.5 rounded-full bg-blue-50 text-[11px] font-semibold text-blue-700">
-                  {item.category}
-                </span>
-              </h2>
-              <p className="text-xs text-neutral-400 font-medium">Curated on Invero by {item.author.name}</p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2">
-            {/* Bookmark button */}
-            <button
-              onClick={() => onToggleSave(item.id)}
-              className={`p-2 rounded-full border transition-all duration-200 hover:scale-105 active:scale-95 ${
-                isSaved
-                  ? 'border-blue-600 bg-blue-50 text-blue-600'
-                  : 'border-neutral-200/90 hover:bg-neutral-50 text-neutral-600'
-              }`}
-              title={isSaved ? "Saved" : "Save to Invero Favourites"}
-            >
-              <BookmarkIcon size={16} filled={isSaved} />
-            </button>
-
-            {/* Like button */}
-            <button
-              onClick={() => onToggleLike(item.id)}
-              className={`p-2 rounded-full border transition-all duration-200 hover:scale-105 active:scale-95 ${
-                isLiked
-                  ? 'border-red-500 bg-red-50 text-red-500'
-                  : 'border-neutral-200/90 hover:bg-neutral-50 text-neutral-600'
-              }`}
-              title="Like"
-            >
-              <HeartIcon size={16} filled={isLiked} />
-            </button>
-
-            {/* Visit Site */}
-            <a
-              href={item.externalUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-sm transition-all duration-200 hover:scale-105 active:scale-95"
-            >
-              <span>Visit Site</span>
-              <ExternalLinkIcon size={13} />
-            </a>
-
-            {/* Close */}
-            <button
-              onClick={onClose}
-              className="p-2 rounded-full hover:bg-neutral-100 text-neutral-400 hover:text-neutral-800 transition-colors ml-1"
-            >
-              <CloseIcon size={18} />
-            </button>
-          </div>
-        </div>
-
-        {/* Modal Body */}
-        <div className="overflow-y-auto p-6 space-y-6">
-          {/* Main Hero Shot Container */}
-          <div className="relative rounded-2xl overflow-hidden bg-neutral-950 border border-neutral-200/40 shadow-inner flex items-center justify-center">
-            <img
-              src={item.image}
-              alt={item.title}
-              className="w-full max-h-[580px] object-contain mx-auto"
-            />
-          </div>
-
-          {/* Details & Metadata Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
-            {/* Description & Overview */}
-            <div className="md:col-span-2 space-y-4">
-              <div>
-                <h3 className="text-base font-bold text-neutral-900 mb-1.5">Design Overview</h3>
-                <p className="text-sm text-neutral-600 leading-relaxed font-normal">
-                  {item.description}
-                </p>
-              </div>
-
-              {/* Specifications */}
-              {item.specs && (
-                <div className="bg-neutral-50/80 rounded-2xl p-4 border border-neutral-100 grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  {Object.entries(item.specs).map(([key, val]) => (
-                    <div key={key}>
-                      <span className="block text-[10.5px] font-bold text-neutral-400 uppercase tracking-wider mb-0.5">
-                        {key}
-                      </span>
-                      <span className="text-xs font-semibold text-neutral-800">
-                        {val}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {/* Tags */}
-              <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                {item.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1 rounded-full bg-neutral-100/80 hover:bg-neutral-200/80 text-xs font-medium text-neutral-700 transition-colors cursor-default"
+        {/* Left / Center Section: Design Showcase Canvas */}
+        <div className="flex-1 bg-[#f8f8fa] p-5 sm:p-8 lg:p-10 flex flex-col justify-between items-center overflow-y-auto relative border-b lg:border-b-0 lg:border-r border-neutral-200/70 select-none">
+          {/* Top Multi-image Tabs (e.g. Slide 01 / Slide 04 for DGREES) */}
+          {images.length > 1 ? (
+            <div className="flex items-center gap-2 mb-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-neutral-200/80 shadow-xs z-10">
+              <span className="text-[11px] font-bold text-neutral-400 uppercase tracking-wider pl-1">
+                Screens:
+              </span>
+              <div className="flex items-center gap-1.5">
+                {images.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveImgIndex(i)}
+                    className={`px-3 py-1 rounded-full text-xs font-semibold transition-all duration-150 ${
+                      activeImgIndex === i
+                        ? 'bg-neutral-900 text-white shadow-xs'
+                        : 'bg-neutral-100 hover:bg-neutral-200 text-neutral-600'
+                    }`}
                   >
-                    #{tag}
-                  </span>
+                    {i === 0 ? '01 Giving Our Best' : i === 1 ? '04 Connecting Brands' : `Slide 0${i + 1}`}
+                  </button>
                 ))}
               </div>
             </div>
+          ) : (
+            <div className="h-2" />
+          )}
 
-            {/* Sidebar: Color Palette & Copy */}
-            <div className="space-y-4 bg-neutral-50/80 rounded-2xl p-4 border border-neutral-100/80">
-              {/* Palette */}
-              <div>
-                <div className="flex items-center justify-between mb-2.5">
-                  <h4 className="text-xs font-bold text-neutral-800 uppercase tracking-wider">
-                    Extracted Palette
-                  </h4>
-                  {copiedColor && (
-                    <span className="text-[11px] font-semibold text-blue-600 animate-pulse">
-                      Copied {copiedColor}!
+          {/* Main Visual Preview Window */}
+          <div className="w-full flex-1 flex items-center justify-center my-auto py-2">
+            <div className="relative max-w-full rounded-2xl overflow-hidden shadow-[0_20px_50px_-15px_rgba(0,0,0,0.12)] border border-neutral-200/90 bg-white transition-all duration-300">
+              <img
+                src={currentImage}
+                alt={item.title}
+                className="w-full max-h-[620px] object-contain block mx-auto transition-transform duration-300"
+              />
+            </div>
+          </div>
+
+          {/* Bottom Slide Indicators if multiple images */}
+          {images.length > 1 ? (
+            <div className="flex items-center gap-2 mt-4 text-xs text-neutral-400">
+              <button
+                onClick={() => setActiveImgIndex((prev) => (prev - 1 + images.length) % images.length)}
+                className="px-2.5 py-1 rounded-full bg-white hover:bg-neutral-100 text-neutral-700 border border-neutral-200 font-semibold transition-all"
+              >
+                ‹ Previous Slide
+              </button>
+              <span className="font-mono text-[11px]">
+                {activeImgIndex + 1} / {images.length}
+              </span>
+              <button
+                onClick={() => setActiveImgIndex((prev) => (prev + 1) % images.length)}
+                className="px-2.5 py-1 rounded-full bg-white hover:bg-neutral-100 text-neutral-700 border border-neutral-200 font-semibold transition-all"
+              >
+                Next Slide ›
+              </button>
+            </div>
+          ) : (
+            <div className="h-2" />
+          )}
+        </div>
+
+        {/* Right Sidebar Section (Exact match to uploaded UI) */}
+        <div className="w-full lg:w-[420px] xl:w-[440px] bg-white p-6 sm:p-8 flex flex-col justify-between overflow-y-auto shrink-0 space-y-6">
+          <div className="space-y-5">
+            {/* Top Bar with Title & Close Button */}
+            <div className="flex items-start justify-between gap-4">
+              <h2 className="text-xl sm:text-2xl font-extrabold text-neutral-900 tracking-tight leading-tight">
+                {item.title}
+              </h2>
+              <button
+                onClick={onClose}
+                className="p-1.5 rounded-full hover:bg-neutral-100 text-neutral-400 hover:text-neutral-800 transition-colors shrink-0"
+                title="Close modal (Esc)"
+              >
+                <CloseIcon size={20} />
+              </button>
+            </div>
+
+            {/* Description Paragraph */}
+            <p className="text-xs sm:text-[13.5px] text-neutral-600 leading-relaxed font-normal">
+              {item.description}
+            </p>
+
+            {/* Author Box */}
+            <div className="rounded-2xl border border-neutral-200/80 p-3 flex items-center justify-between hover:border-neutral-300 transition-colors bg-white">
+              <div className="flex items-center gap-3 min-w-0">
+                <div className="w-9 h-9 rounded-full bg-neutral-900 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
+                  {item.author.avatar ? (
+                    <img src={item.author.avatar} alt={item.author.name} className="w-full h-full object-cover rounded-full" />
+                  ) : (
+                    item.author.name.charAt(0)
+                  )}
+                </div>
+                <div className="min-w-0">
+                  <div className="flex items-center gap-1.5">
+                    <span className="font-bold text-xs text-neutral-900 truncate">
+                      {item.author.name}
+                    </span>
+                    <span className="w-3.5 h-3.5 rounded-full bg-blue-500 text-white flex items-center justify-center text-[9px] font-bold">
+                      ✓
+                    </span>
+                  </div>
+                  <span className="text-[11px] text-neutral-400 block truncate font-medium">
+                    {item.author.handle || '@invero'}
+                  </span>
+                </div>
+              </div>
+
+              {item.externalUrl && item.externalUrl !== '#' ? (
+                <a
+                  href={item.externalUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-xs font-semibold text-neutral-700 hover:text-blue-600 flex items-center gap-1 transition-colors shrink-0 px-2 py-1"
+                >
+                  <span>Open on X</span>
+                  <ExternalLinkIcon size={12} />
+                </a>
+              ) : (
+                <button
+                  onClick={onClose}
+                  className="text-neutral-400 hover:text-neutral-600 p-1"
+                >
+                  <CloseIcon size={14} />
+                </button>
+              )}
+            </div>
+
+            {/* Action Buttons */}
+            <div className="space-y-2.5 pt-1">
+              {/* Primary Blue Button: CLI Command (if available) OR Generate Prompt */}
+              {item.cliCommand ? (
+                <button
+                  onClick={handleCopyCli}
+                  className={`w-full py-3.5 px-5 rounded-full font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all duration-200 active:scale-[0.98] shadow-sm ${
+                    copiedCli
+                      ? 'bg-emerald-600 hover:bg-emerald-700 text-white'
+                      : 'bg-blue-600 hover:bg-blue-700 text-white'
+                  }`}
+                >
+                  {copiedCli ? (
+                    <>
+                      <CheckIcon size={16} className="text-white" />
+                      <span>Copied: {item.cliCommand}</span>
+                    </>
+                  ) : (
+                    <>
+                      <CopyIcon size={16} />
+                      <span className="truncate">CLI: {item.cliCommand}</span>
+                    </>
+                  )}
+                </button>
+              ) : (
+                <button
+                  onClick={handleCopyPrompt}
+                  className="w-full py-3.5 px-5 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all duration-200 active:scale-[0.98] shadow-sm"
+                >
+                  <ZapIcon size={16} />
+                  <span>{copiedPrompt ? 'Prompt Copied!' : 'Generate & copy prompt'}</span>
+                </button>
+              )}
+
+              {/* Secondary Button: Add to moodboard / Save */}
+              <button
+                onClick={() => onToggleSave(item.id)}
+                className={`w-full py-3 px-5 rounded-full border text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all duration-200 active:scale-[0.98] ${
+                  isSaved
+                    ? 'border-blue-600 bg-blue-50/80 text-blue-700 font-bold'
+                    : 'border-neutral-200 hover:bg-neutral-50 text-neutral-800'
+                }`}
+              >
+                <LayersIcon size={15} />
+                <span>{isSaved ? 'Added to moodboard ✓' : 'Add to moodboard'}</span>
+              </button>
+            </div>
+
+            {/* Metadata Rows (Category, Type, Technologies, Palette) */}
+            <div className="pt-3 border-t border-neutral-100 space-y-3 text-xs">
+              {/* Category */}
+              <div className="flex items-center justify-between">
+                <span className="text-neutral-400 font-medium">Category</span>
+                <span className="font-semibold text-neutral-900">{item.category}</span>
+              </div>
+
+              {/* Technologies (React, CSS, Lenis, GSAP) */}
+              {item.technologies && item.technologies.length > 0 && (
+                <div className="flex items-start justify-between gap-2">
+                  <span className="text-neutral-400 font-medium pt-0.5">Technologies</span>
+                  <div className="flex flex-wrap items-center justify-end gap-1.5">
+                    {item.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-0.5 rounded-md bg-neutral-100 text-neutral-800 text-[11px] font-bold"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Type / Tags */}
+              <div className="flex items-start justify-between gap-2">
+                <span className="text-neutral-400 font-medium pt-0.5">Type</span>
+                <div className="text-right">
+                  <span className="font-semibold text-neutral-900">
+                    {item.tags.slice(0, 2).join(' · ')}
+                  </span>
+                  {item.tags.length > 2 && (
+                    <span className="text-neutral-400 font-normal block text-[11px]">
+                      ...{item.tags.length - 2} more
                     </span>
                   )}
                 </div>
+              </div>
 
-                <div className="grid grid-cols-5 gap-2">
-                  {item.palette.map((color) => (
-                    <button
-                      key={color}
-                      onClick={() => handleCopyColor(color)}
-                      className="group relative flex flex-col items-center transition-transform hover:scale-105 active:scale-95"
-                      title={`Click to copy ${color}`}
-                    >
-                      <div
-                        className="w-full aspect-square rounded-xl shadow-xs border border-black/10 group-hover:shadow-md transition-shadow"
+              {/* Color Palette */}
+              {item.palette && (
+                <div className="flex items-center justify-between pt-1">
+                  <span className="text-neutral-400 font-medium">Palette</span>
+                  <div className="flex items-center gap-1.5">
+                    {item.palette.map((color) => (
+                      <button
+                        key={color}
+                        onClick={() => handleCopyColor(color)}
+                        className="w-4 h-4 rounded-full border border-black/10 transition-transform hover:scale-125"
                         style={{ backgroundColor: color }}
+                        title={`Copy ${color}`}
                       />
-                      <span className="text-[10px] font-mono text-neutral-500 mt-1 uppercase font-semibold">
-                        {color.replace('#', '')}
+                    ))}
+                    {copiedColor && (
+                      <span className="text-[10px] text-blue-600 font-bold ml-1 animate-pulse">
+                        Copied!
                       </span>
-                    </button>
-                  ))}
+                    )}
+                  </div>
                 </div>
-              </div>
-
-              {/* Share & Copy Link */}
-              <div className="pt-2 border-t border-neutral-200/60">
-                <button
-                  onClick={handleCopyLink}
-                  className="w-full py-2.5 px-3 rounded-xl border border-neutral-200 bg-white hover:bg-neutral-50 text-xs font-semibold text-neutral-700 flex items-center justify-center gap-2 transition-all duration-200 hover:scale-[1.01] active:scale-[0.98] shadow-xs"
-                >
-                  {copiedLink ? <CheckIcon size={14} className="text-green-600" /> : <ShareIcon size={14} />}
-                  <span>{copiedLink ? 'Link Copied to Clipboard!' : 'Share Design'}</span>
-                </button>
-              </div>
+              )}
             </div>
           </div>
-        </div>
 
-        {/* Modal Footer with Smooth Next / Prev */}
-        <div className="px-6 py-3.5 border-t border-neutral-100 bg-neutral-50/90 flex items-center justify-between text-xs text-neutral-500">
-          <div className="flex items-center gap-3">
-            <span className="font-medium text-neutral-700">{item.views} Views</span>
-            <span>•</span>
-            <span className="font-medium text-neutral-700">{item.likes + (isLiked ? 1 : 0)} Likes</span>
-            <span>•</span>
-            <span className="font-medium text-neutral-700">{item.saves + (isSaved ? 1 : 0)} Saves</span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <button
-              onClick={onPrev}
-              className="px-3.5 py-1.5 rounded-full border border-neutral-200 bg-white hover:bg-neutral-100 text-neutral-700 font-semibold transition-all duration-150 hover:scale-105 active:scale-95"
-            >
-              ← Previous
-            </button>
-            <button
-              onClick={onNext}
-              className="px-3.5 py-1.5 rounded-full border border-neutral-200 bg-white hover:bg-neutral-100 text-neutral-700 font-semibold transition-all duration-150 hover:scale-105 active:scale-95"
-            >
-              Next →
-            </button>
-          </div>
+          {/* Bottom Section: Similar designs */}
+          {similarDesigns.length > 0 && (
+            <div className="pt-4 border-t border-neutral-100">
+              <h4 className="text-xs font-bold text-neutral-900 mb-2.5">
+                Similar designs
+              </h4>
+              <div className="grid grid-cols-3 gap-2.5">
+                {similarDesigns.map((sim) => (
+                  <div
+                    key={sim.id}
+                    onClick={() => onSelectSimilar && onSelectSimilar(sim)}
+                    className="group relative rounded-xl overflow-hidden border border-neutral-200/90 aspect-[16/10] bg-neutral-100 cursor-pointer transition-all hover:scale-105 hover:border-neutral-400 shadow-xs"
+                    title={sim.title}
+                  >
+                    <img
+                      src={sim.image}
+                      alt={sim.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

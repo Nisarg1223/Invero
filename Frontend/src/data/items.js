@@ -123,13 +123,42 @@ export const INITIAL_ITEMS = [
       'Visual Style': 'Retro Pop-Art Comic Multi-Panel Sci-Fi Illustration'
     },
     externalUrl: '#'
+  },
+  {
+    id: 'dgrees-studio',
+    title: 'DGREES Studio — Pixel Slice & Interactive Canvas',
+    subtitle: 'Giving Our Best & Culture Resonance',
+    category: 'Components',
+    image: '/images/dgrees-ghost.png',
+    images: ['/images/dgrees-ghost.png', '/images/dgrees-heart.png'],
+    cliCommand: 'npx nisarg-dgrees-studio',
+    technologies: ['React', 'CSS', 'Lenis', 'GSAP'],
+    author: {
+      name: 'DGREES Studio',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80',
+      handle: '@dgrees'
+    },
+    likes: 672,
+    saves: 489,
+    views: '8.4k',
+    sponsored: false,
+    tags: ['Components', 'Interactive', 'Pixel Art', 'Animation', 'Websites'],
+    palette: ['#FF5500', '#E11D48', '#000000', '#F8FAFC', '#2563EB'],
+    description: 'High-craft interactive studio portfolio featuring grid-based pixel slices, scroll-driven slice transitions, smooth Lenis inertia scrolling, and GSAP micro-animations. Connects brand architecture, digital craftsmanship, and cultural resonance.',
+    specs: {
+      'Framework': 'React & Vite',
+      'Smooth Scroll': 'Lenis Scroll-Driven Physics',
+      'Animation Engine': 'GSAP Timelines & Canvas Grid',
+      'Aesthetic': 'Minimalist Swiss Grid & Retro Pixel Art'
+    },
+    externalUrl: 'https://dgrees.studio'
   }
 ];
 
 export const CATEGORIES = [
   'Home',
   'Hero',
-  'Features',
+  'Components',
   'Bento',
   'Pricing',
   'CTA',

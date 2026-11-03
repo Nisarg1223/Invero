@@ -12,12 +12,26 @@ export default function CardItem({
 }) {
   const [copied, setCopied] = useState(false);
   const [imgLoaded, setImgLoaded] = useState(false);
+  const [activeImgIndex, setActiveImgIndex] = useState(0);
+
+  const images = item.images && item.images.length > 0 ? item.images : [item.image];
+  const currentImage = images[activeImgIndex] || item.image;
 
   const handleCopyLink = (e) => {
     e.stopPropagation();
     navigator.clipboard.writeText(window.location.origin + '#' + item.id);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleNextImage = (e) => {
+    e.stopPropagation();
+    setActiveImgIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const handlePrevImage = (e) => {
+    e.stopPropagation();
+    setActiveImgIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
   return (
@@ -38,7 +52,8 @@ export default function CardItem({
         )}
 
         <img
-          src={item.image}
+          key={currentImage}
+          src={currentImage}
           alt={item.title}
           onLoad={() => setImgLoaded(true)}
           onError={() => setImgLoaded(true)}
@@ -46,6 +61,58 @@ export default function CardItem({
             imgLoaded ? 'opacity-100' : 'opacity-0 absolute inset-0'
           }`}
         />
+
+        {/* Multi-image indicators if multiple images */}
+        {images.length > 1 && (
+          <>
+            {/* Top Left Slide Indicator */}
+            <div className="absolute top-3.5 left-3.5 z-10">
+              <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[11px] font-semibold text-white shadow-xs border border-white/10 flex items-center gap-1">
+                <span>Slide</span>
+                <span className="text-blue-400 font-bold">{activeImgIndex + 1}</span>
+                <span className="text-white/40">/</span>
+                <span>{images.length}</span>
+              </span>
+            </div>
+
+            {/* Bottom Dots Indicator */}
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 opacity-80 group-hover:opacity-100 transition-opacity">
+              {images.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveImgIndex(i);
+                  }}
+                  className={`transition-all duration-200 rounded-full ${
+                    activeImgIndex === i 
+                      ? 'w-4 h-1.5 bg-white' 
+                      : 'w-1.5 h-1.5 bg-white/40 hover:bg-white/80'
+                  }`}
+                  title={`View slide ${i + 1}`}
+                />
+              ))}
+            </div>
+
+            {/* Prev/Next Quick Navigation Buttons (Appears on Hover) */}
+            <div className="absolute inset-y-0 left-2 right-2 flex items-center justify-between pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity z-10">
+              <button
+                onClick={handlePrevImage}
+                className="pointer-events-auto w-7 h-7 rounded-full bg-black/50 hover:bg-black/75 text-white flex items-center justify-center backdrop-blur-md transition-all active:scale-90"
+                title="Previous slide"
+              >
+                ‹
+              </button>
+              <button
+                onClick={handleNextImage}
+                className="pointer-events-auto w-7 h-7 rounded-full bg-black/50 hover:bg-black/75 text-white flex items-center justify-center backdrop-blur-md transition-all active:scale-90"
+                title="Next slide"
+              >
+                ›
+              </button>
+            </div>
+          </>
+        )}
 
         {/* Top Badges (e.g. Sponsored if applicable) */}
         {item.sponsored && (
