@@ -127,7 +127,7 @@ export default function SubmitModal({ isOpen, onClose, onAddItem }) {
                   <option value="Hero">Hero</option>
                   <option value="Components">Components</option>
                   <option value="Graphic Design">Graphic Design</option>
-                  <option value="Pricing">Pricing</option>
+                  <option value="Authentication">Authentication</option>
                   <option value="CTA">CTA</option>
                   <option value="Websites">Websites</option>
                 </select>

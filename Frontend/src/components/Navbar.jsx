@@ -1,18 +1,12 @@
 import React, { useState } from 'react';
-import { InveroLogo, SearchIcon, PlusIcon, ChevronDownIcon, CloseIcon, SparklesIcon } from './Icons';
-import { CATEGORIES, NAV_LINKS } from '../data/items';
+import { InveroLogo, PlusIcon, ChevronDownIcon } from './Icons';
+import { CATEGORIES } from '../data/items';
 
 export default function Navbar({
   selectedCategory,
   onSelectCategory,
-  selectedNav,
-  onSelectNav,
-  searchQuery,
-  onSearchChange,
-  favouritesCount,
   onOpenSubmitModal
 }) {
-  const [showSearchInput, setShowSearchInput] = useState(false);
   const [latestFilter, setLatestFilter] = useState('Latest');
   const [showLatestDropdown, setShowLatestDropdown] = useState(false);
 
@@ -23,7 +17,7 @@ export default function Navbar({
         {/* Left: Invero Brand & Inspiration Badge */}
         <div className="flex items-center gap-3.5">
           <button 
-            onClick={() => { onSelectCategory('Home'); onSelectNav('all'); }} 
+            onClick={() => onSelectCategory('Home')} 
             className="flex items-center gap-2.5 text-left group transition-transform active:scale-[0.98]"
           >
             <InveroLogo size={32} />
@@ -98,9 +92,8 @@ export default function Navbar({
         </div>
       </div>
 
-      {/* Sub-bar: Category Pills & Sub-Nav Links */}
-      <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-col md:flex-row md:items-center justify-between gap-3">
-        {/* Category Pills Bar (Left) */}
+      {/* Sub-bar: Category Pills */}
+      <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
         <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5 -mx-1 px-1 scroll-smooth">
           {CATEGORIES.map((cat) => {
             const isActive = selectedCategory === cat;
@@ -118,74 +111,6 @@ export default function Navbar({
               </button>
             );
           })}
-        </div>
-
-        {/* Sub-Nav Items & Search (Right) */}
-        <div className="flex items-center gap-4 text-xs font-medium text-neutral-500 shrink-0 self-end md:self-center">
-          {NAV_LINKS.map((link) => {
-            if (link.id === 'search') {
-              return (
-                <div key={link.id} className="relative flex items-center">
-                  {showSearchInput ? (
-                    <div className="flex items-center bg-white/95 rounded-full px-3 py-1.5 gap-2 border border-neutral-300 shadow-sm transition-all duration-200 animate-in fade-in zoom-in-95">
-                      <SearchIcon size={14} className="text-neutral-400" />
-                      <input
-                        type="text"
-                        autoFocus
-                        value={searchQuery}
-                        onChange={(e) => onSearchChange(e.target.value)}
-                        placeholder="Search inspiration..."
-                        className="bg-transparent border-none outline-none text-xs text-neutral-800 placeholder-neutral-400 w-32 sm:w-44 font-medium"
-                      />
-                      <button
-                        onClick={() => {
-                          setShowSearchInput(false);
-                          onSearchChange('');
-                        }}
-                        className="text-neutral-400 hover:text-neutral-700 transition-colors"
-                      >
-                        <CloseIcon size={13} />
-                      </button>
-                    </div>
-                  ) : (
-                    <button
-                      onClick={() => setShowSearchInput(true)}
-                      className="flex items-center gap-1.5 text-neutral-600 hover:text-neutral-950 font-semibold transition-all duration-150 hover:scale-105 active:scale-95"
-                    >
-                      <SearchIcon size={14} />
-                      <span>Search</span>
-                    </button>
-                  )}
-                </div>
-              );
-            }
-
-            const isActive = selectedNav === link.id;
-            return (
-              <button
-                key={link.id}
-                onClick={() => onSelectNav(link.id)}
-                className={`transition-all duration-150 flex items-center gap-1.5 hover:text-neutral-900 font-semibold active:scale-95 ${
-                  isActive ? 'text-blue-600' : 'text-neutral-600'
-                }`}
-              >
-                <span>{link.label}</span>
-                {link.id === 'favourites' && favouritesCount > 0 && (
-                  <span className="w-4 h-4 rounded-full bg-blue-600 text-white text-[10px] flex items-center justify-center font-bold shadow-sm shadow-blue-500/30">
-                    {favouritesCount}
-                  </span>
-                )}
-              </button>
-            );
-          })}
-
-          {/* Far Right Status Glow */}
-          <div 
-            className="w-5 h-5 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-500 shadow-md shadow-blue-500/25 flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-110 active:scale-90"
-            title="Invero Network: Active & Live"
-          >
-            <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-          </div>
         </div>
       </div>
     </header>

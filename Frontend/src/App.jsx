@@ -10,8 +10,6 @@ import { SparklesIcon, GlobeGrid } from './components/Icons';
 export default function App() {
   const [items, setItems] = useState(INITIAL_ITEMS);
   const [selectedCategory, setSelectedCategory] = useState('Home');
-  const [selectedNav, setSelectedNav] = useState('all');
-  const [searchQuery, setSearchQuery] = useState('');
   
   // Modals & Active state
   const [activeModalItem, setActiveModalItem] = useState(null);
@@ -58,17 +56,9 @@ export default function App() {
     });
   };
 
-  // Filter items based on Category, Nav (e.g. Favourites), and Search Query
+  // Filter items based on Category
   const filteredItems = useMemo(() => {
     return items.filter((item) => {
-      // Nav filter (e.g. Favourites)
-      if (selectedNav === 'favourites' && !savedIds.has(item.id)) {
-        return false;
-      }
-      if (selectedNav === 'websites' && !item.tags.includes('Websites')) {
-        return false;
-      }
-
       // Category filter
       if (selectedCategory === 'Home') {
         if (item.category !== 'Home' && !item.tags.includes('Home')) {
@@ -81,21 +71,9 @@ export default function App() {
         if (!matchesCat) return false;
       }
 
-      // Search Query
-      if (searchQuery.trim()) {
-        const q = searchQuery.toLowerCase();
-        const matchesTitle = item.title.toLowerCase().includes(q);
-        const matchesSubtitle = (item.subtitle || '').toLowerCase().includes(q);
-        const matchesTags = item.tags.some(t => t.toLowerCase().includes(q));
-        const matchesAuthor = item.author.name.toLowerCase().includes(q);
-        if (!matchesTitle && !matchesSubtitle && !matchesTags && !matchesAuthor) {
-          return false;
-        }
-      }
-
       return true;
     });
-  }, [items, selectedCategory, selectedNav, searchQuery, savedIds]);
+  }, [items, selectedCategory]);
 
   // Handle Surprise Me action
   const handleSurpriseMe = () => {
@@ -156,49 +134,25 @@ export default function App() {
       {/* Navigation matching Image 1 with Invero branding */}
       <Navbar
         selectedCategory={selectedCategory}
-        onSelectCategory={(cat) => {
-          setSelectedCategory(cat);
-          if (selectedNav === 'favourites') setSelectedNav('all');
-        }}
-        selectedNav={selectedNav}
-        onSelectNav={(navId) => setSelectedNav(navId)}
-        searchQuery={searchQuery}
-        onSearchChange={setSearchQuery}
-        favouritesCount={savedIds.size}
+        onSelectCategory={(cat) => setSelectedCategory(cat)}
         onOpenSubmitModal={() => setIsSubmitModalOpen(true)}
       />
 
       {/* Main Content Area */}
       <main className="flex-1 max-w-[1720px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-7">
         {/* Active Filter Indicator */}
-        {(selectedCategory !== 'Home' || selectedNav !== 'all' || searchQuery) && (
+        {selectedCategory !== 'Home' && (
           <div className="mb-6 flex items-center justify-between bg-white/90 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-neutral-200/80 shadow-xs animate-in fade-in duration-200">
             <div className="flex items-center gap-2 text-xs text-neutral-600">
               <span className="font-bold text-neutral-900">Invero Filter:</span>
-              {selectedCategory !== 'Home' && (
-                <span className="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 font-semibold border border-blue-100">
-                  Category: {selectedCategory}
-                </span>
-              )}
-              {selectedNav !== 'all' && (
-                <span className="px-2.5 py-0.5 rounded-full bg-neutral-100 text-neutral-700 font-semibold">
-                  Section: {selectedNav}
-                </span>
-              )}
-              {searchQuery && (
-                <span className="px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 font-semibold border border-amber-100">
-                  Search: "{searchQuery}"
-                </span>
-              )}
+              <span className="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 font-semibold border border-blue-100">
+                Category: {selectedCategory}
+              </span>
               <span className="text-neutral-400 font-medium">({filteredItems.length} shots)</span>
             </div>
 
             <button
-              onClick={() => {
-                setSelectedCategory('Home');
-                setSelectedNav('all');
-                setSearchQuery('');
-              }}
+              onClick={() => setSelectedCategory('Home')}
               className="text-xs font-bold text-blue-600 hover:text-blue-800 transition-colors"
             >
               Reset Filters

@@ -206,6 +206,35 @@ export const INITIAL_ITEMS = [
       'Visual Style': 'Kinetic Halftone & Matchday Collage'
     },
     externalUrl: '#'
+  },
+  {
+    id: 'login-auth',
+    title: 'Sign Up & Login — Modern Split Screen',
+    subtitle: 'Grids, Layout & Typography',
+    category: 'Authentication',
+    image: '/images/login.png',
+    images: ['/images/login.png'],
+    author: {
+      name: 'Akinbiju Akintayo',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80',
+      handle: '@akinbiju'
+    },
+    likes: 542,
+    saves: 378,
+    views: '6.9k',
+    sponsored: false,
+    tags: ['Authentication', 'Login', 'Sign Up', 'Form', 'Websites', 'Dark Mode'],
+    palette: ['#1D4ED8', '#18181B', '#E05A2B', '#E2E8F0', '#27272A'],
+    description: 'High-contrast split-screen authentication interface featuring an artistic fashion editorial visual on electric cobalt blue alongside a sleek dark-mode sign-up and login panel with clean typography.',
+    specs: {
+      'Category': 'Authentication',
+      'Layout': 'Split Screen Hero & Floating Auth Panel',
+      'Design Style': 'Grids, Layout & Typography',
+      'Color Vibe': 'Cobalt Blue, Charcoal & Ginger Orange',
+      'Typography': 'Modern Bold Grotesk Display'
+    },
+    technologies: ['React', 'Tailwind CSS'],
+    externalUrl: '#'
   }
 ];
 
@@ -214,21 +243,11 @@ export const CATEGORIES = [
   'Hero',
   'Components',
   'Graphic Design',
-  'Pricing',
+  'Authentication',
   'CTA',
   'Logo Cloud',
   'Testimonials',
   'FAQ',
   'Changelog',
   'Footer'
-];
-
-export const NAV_LINKS = [
-  { id: 'websites', label: 'Websites' },
-  { id: 'best-of-x', label: 'Best of X' },
-  { id: 'launch-videos', label: 'Launch Videos' },
-  { id: 'tools', label: 'Tools' },
-  { id: 'og-images', label: 'OG Images' },
-  { id: 'favourites', label: 'Favourites' },
-  { id: 'search', label: 'Search' }
 ];
