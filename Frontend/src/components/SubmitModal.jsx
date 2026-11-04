@@ -125,8 +125,8 @@ export default function SubmitModal({ isOpen, onClose, onAddItem }) {
                   className="w-full px-3 py-2.5 text-xs rounded-xl border border-neutral-200 focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all bg-white font-medium"
                 >
                   <option value="Hero">Hero</option>
-                  <option value="Features">Features</option>
-                  <option value="Bento">Bento</option>
+                  <option value="Components">Components</option>
+                  <option value="Graphic Design">Graphic Design</option>
                   <option value="Pricing">Pricing</option>
                   <option value="CTA">CTA</option>
                   <option value="Websites">Websites</option>

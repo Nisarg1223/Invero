@@ -156,6 +156,7 @@ export const INITIAL_ITEMS = [
     category: 'Components',
     image: '/images/dgrees-ghost.png',
     images: ['/images/dgrees-ghost.png', '/images/dgrees-heart.png'],
+    imageLabels: ['01 Giving Our Best', '04 Connecting Brands'],
     cliCommand: 'npx nisarg-dgrees-studio',
     technologies: ['React', 'CSS', 'Lenis', 'GSAP'],
     author: {
@@ -177,6 +178,34 @@ export const INITIAL_ITEMS = [
       'Aesthetic': 'Minimalist Swiss Grid & Retro Pixel Art'
     },
     externalUrl: 'https://dgrees.studio'
+  },
+  {
+    id: 'brazil-football-graphic',
+    title: 'Brasil! — World Cup Football Visual Identity',
+    subtitle: 'Editorial Matchday & Propaganda Poster Art',
+    category: 'Graphic Design',
+    image: '/images/brasil-poster.png',
+    images: ['/images/brasil-poster.png', '/images/brazil-journey.png'],
+    imageLabels: ['01 Brasil! Matchday', '02 Electrifying Journey'],
+    author: {
+      name: 'Seleção Studio',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80',
+      handle: '@selecaostudio'
+    },
+    likes: 584,
+    saves: 392,
+    views: '7.8k',
+    sponsored: false,
+    tags: ['Graphic Design', 'Poster', 'Sports', 'Typography', 'Editorial', 'Football'],
+    palette: ['#FED100', '#009C3B', '#002776', '#0A1128', '#FFFFFF'],
+    description: 'High-voltage sports editorial graphic design posters celebrating Brasil football and its electrifying World Cup journey. Combines bold vintage typography, dynamic player action cuts, textured halftone gradients, and vibrant national team iconography.',
+    specs: {
+      'Category': 'Graphic Design',
+      'Medium': 'Sports Editorial Poster & Digital Print',
+      'Typography': 'Heavy Display Grotesk & Vintage Slab',
+      'Visual Style': 'Kinetic Halftone & Matchday Collage'
+    },
+    externalUrl: '#'
   }
 ];
 
@@ -184,7 +213,7 @@ export const CATEGORIES = [
   'Home',
   'Hero',
   'Components',
-  'Bento',
+  'Graphic Design',
   'Pricing',
   'CTA',
   'Logo Cloud',

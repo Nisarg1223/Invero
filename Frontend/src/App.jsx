@@ -218,9 +218,9 @@ export default function App() {
               />
             </div>
 
-            {/* If 1 item in a specific category (like Components or Hero), let it span xl:col-span-2 for wide presentation */}
+            {/* If 1 item in a specific category (like Components, Graphic Design, or Hero) */}
             {filteredItems.length === 1 && selectedCategory !== 'Home' ? (
-              <div className="w-full md:col-span-1 xl:col-span-2">
+              <div className={`w-full ${filteredItems[0]?.category === 'Graphic Design' ? 'md:col-span-1 xl:col-span-1 max-w-md' : 'md:col-span-1 xl:col-span-2'}`}>
                 {filteredItems.map((item) => (
                   <CardItem
                     key={item.id}

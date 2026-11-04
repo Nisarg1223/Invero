@@ -93,7 +93,7 @@ export default function DetailModal({
                         : 'bg-neutral-100 hover:bg-neutral-200 text-neutral-600'
                     }`}
                   >
-                    {i === 0 ? '01 Giving Our Best' : i === 1 ? '04 Connecting Brands' : `Slide 0${i + 1}`}
+                    {item.imageLabels?.[i] || (item.id === 'dgrees-studio' ? (i === 0 ? '01 Giving Our Best' : '04 Connecting Brands') : `Slide 0${i + 1}`)}
                   </button>
                 ))}
               </div>
