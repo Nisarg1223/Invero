@@ -2,8 +2,7 @@
 <!--                    INVERO README                  -->
 <!-- ================================================== -->
 
-<div align="center">
-
+ <div align="center">
 
 # ✦ INVERO
 
@@ -17,17 +16,11 @@ A curated universe of beautifully crafted UI components, premium website templat
 
 <br/>
 
-
-<img width="956" height="377" alt="image" src="https://github.com/user-attachments/assets/b620a3cc-d2fc-463f-9ca0-9c0f73727608" />
-
-
-
+🌐 **[EXPLORE INVERO — VISIT LIVE WEBSITE](https://invero-blond.vercel.app/)**
 
 <br/>
 
-<!-- Add your banner image at assets/invero-banner.png -->
-
-
+<img width="956" height="377" alt="image" src="https://github.com/user-attachments/assets/b620a3cc-d2fc-463f-9ca0-9c0f73727608" />
 
 <br/>
 
