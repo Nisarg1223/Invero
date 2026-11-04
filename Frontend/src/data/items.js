@@ -125,6 +125,31 @@ export const INITIAL_ITEMS = [
     externalUrl: '#'
   },
   {
+    id: 'yuzu-sparkling',
+    title: 'YUZU Mango — Sparkling Beverage',
+    subtitle: 'Freshly Sparkling & Everyday Refreshment',
+    category: 'Hero',
+    image: '/images/yuzu.png',
+    author: {
+      name: 'YUZU Creative Lab',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80',
+      handle: '@yuzusparkling'
+    },
+    likes: 468,
+    saves: 284,
+    views: '5.9k',
+    sponsored: false,
+    tags: ['Hero', 'Websites', 'Beverage', 'CPG', 'Vibrant', 'Playful Typography'],
+    palette: ['#0038FF', '#FF007A', '#FFC5D3', '#FFC700', '#FFFFFF'],
+    description: 'High-energy CPG beverage landing page hero for YUZU Mango Sparkling. Features massive condensed typography, electric cobalt blue and hot magenta color blocking, playful copywriting, and vibrant product photography.',
+    specs: {
+      'Typography': 'Massive Condensed Display & Bold Sans',
+      'Color Vibe': 'Cobalt Blue, Neon Magenta & Mango Yellow',
+      'Visual Style': 'Pop-Art Beverage Branding & High-Energy Photography'
+    },
+    externalUrl: '#'
+  },
+  {
     id: 'dgrees-studio',
     title: 'DGREES Studio — Pixel Slice & Interactive Canvas',
     subtitle: 'Giving Our Best & Culture Resonance',
